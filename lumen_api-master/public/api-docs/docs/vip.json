@@ -1,0 +1,95 @@
+{
+    "title": "测试模块--会员管理",
+    "forms": [
+        {
+            "title": "查询会员/获取会员列表",
+            "description": "",
+            "url": "/vip/user/search",
+            "method": "get",
+            "inputs": [
+                {
+                    "name": "limit",
+                    "description": "查询数据量",
+                    "type": "text"
+                },
+                {
+                    "name": "offset",
+                    "description": "查询偏移量",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "title": "获取会员详情-根据会员id获取",
+            "description": "",
+            "url": "/vip/user/info",
+            "method": "get",
+            "inputs": [
+                {
+                    "name": "id",
+                    "description": "会员id",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "title": "修改会员详情",
+            "description": "",
+            "url": "/vip/user/update",
+            "method": "put",
+            "inputs": [
+                {
+                    "name": "id",
+                    "description": "会员id",
+                    "type": "text"
+                },
+                {
+                    "name": "nick",
+                    "description": "昵称(length<=45)",
+                    "type": "text"
+                },
+                {
+                    "name": "phone",
+                    "description": "电话(length<=45)",
+                    "type": "text"
+                },
+                {
+                    "name": "gender",
+                    "description": "性别(0,1,2)",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "title": "删除会员",
+            "description": "",
+            "url": "/vip/user/delete",
+            "method": "delete",
+            "inputs": [
+                {
+                    "name": "id",
+                    "description": "会员id",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "title": "会员充值--充值积分",
+            "description": "",
+            "url": "/vip/user/recharge",
+            "method": "put",
+            "inputs": [
+                {
+                    "name": "id",
+                    "description": "会员id",
+                    "type": "text"
+                },
+                {
+                    "name": "credit",
+                    "description": "充值的积分",
+                    "type": "text"
+                }
+            ]
+        }
+    ]
+}

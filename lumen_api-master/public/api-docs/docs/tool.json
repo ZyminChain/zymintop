@@ -1,0 +1,87 @@
+{
+    "title": "工具模块",
+    "forms": [
+        {
+            "title": "音频上传",
+            "description": "",
+            "url": "/tool/audio",
+            "method": "post",
+            "inputs": [
+                {
+                    "name": "audio",
+                    "description": "音频",
+                    "type": "file"
+                }
+            ]
+        },
+        {
+            "title": "视频上传",
+            "description": "",
+            "url": "/tool/video",
+            "method": "post",
+            "inputs": [
+                {
+                    "name": "video",
+                    "description": "视频",
+                    "type": "file"
+                }
+            ]
+        },
+        {
+            "title": "富文本文件上传图片/视频--要权限校验",
+            "description": "",
+            "url": "/tool/edit/upload",
+            "method": "post",
+            "inputs": [
+                {
+                    "name": "file",
+                    "description": "文件",
+                    "type": "file"
+                },
+                {
+                    "name": "ng-params-one",
+                    "description": "客户端获取的secret"
+                },
+                {
+                    "name": "ng-params-two",
+                    "description": "客户端获取的token"
+                },
+                {
+                    "name": "ng-params-three",
+                    "description": "客户端平台名称"
+                }
+            ]
+        },
+        {
+            "title": "获取一些虚假的测试用户数据",
+            "description": "从https://randomuser.me下载一些测试用户数据到用户表",
+            "url": "/tool/download/randomuser",
+            "method": "get",
+            "inputs": []
+        },
+        {
+            "title": "测试ORM SEARCH特性",
+            "description": "",
+            "url": "/traits/search",
+            "method": "get",
+            "inputs": [
+                {
+                    "name": "params-one",
+                    "desctiption": ""
+                },
+                {
+                    "name": "params-two",
+                    "desctiption": ""
+                },
+                {
+                    "name": "limit",
+                    "desctiption": ""
+                },
+                {
+                    "name": "offset",
+                    "desctiption": ""
+                }
+            ]
+        }
+    ]
+}

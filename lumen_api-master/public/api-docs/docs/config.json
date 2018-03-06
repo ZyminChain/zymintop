@@ -1,0 +1,21 @@
+{
+  "server": "",
+  "title": "LUMEN-API-DOCS",
+  "headers": [
+    "ng-params-one",
+    "ng-params-two",
+    "ng-params-three",
+    "ng-params-four"
+  ],
+  "docs": [
+    "sdk.json",
+    "tool.json",
+    "auth.json",
+    "menu.json",
+    "permission.json",
+    "role.json",
+    "admin.json",
+    "goods.json",
+    "vip.json"
+  ]
+}
