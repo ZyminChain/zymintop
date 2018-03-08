@@ -37,9 +37,10 @@ class GoodsController extends Controller
      */
     public function searchGoods()
     {
+        return [1,1,1];
+                                       
         $params = $this->api->checkParams(['limit:integer', 'offset:integer'], ['name', 'type', 'status']);
 
-        return $params;
         // 查询参数
         $search_params = [
             'name' => ['where', 'like'],
