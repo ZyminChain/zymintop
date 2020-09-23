@@ -1,0 +1,29 @@
+<div (keydown)="onKeydown($event)" class="container">
+    <div class="login-box">
+        <div class="login-box2">
+            <div class="login-logo">
+                <img [src]="logoUrl" alt="logo" />
+                <span class="login-title">测试</span>
+            </div>
+            <div class="input-box">
+                <label for="account">账号</label>
+                <input
+                    id="account"
+                    type="text"
+                    [(ngModel)]="formData.account"
+                />
+            </div>
+            <div class="input-box">
+                <label for="password">密码</label>
+                <input
+                    id="password"
+                    type="password"
+                    [(ngModel)]="formData.password"
+                />
+            </div>
+            <div class="submit">
+                <button (click)="submit()">登录</button>
+            </div>
+        </div>
+    </div>
+</div>
