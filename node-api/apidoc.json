@@ -1,0 +1,11 @@
+{
+    "name": "nodejs-api",
+    "version": "0.1.0",
+    "description": "api测试文档",
+    "title": "apidoc",
+    "url": "https://localhost",
+    "template": {
+        "withCompare": true,
+        "withGenerator": true
+    }
+}

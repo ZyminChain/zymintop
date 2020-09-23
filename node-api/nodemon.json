@@ -1,0 +1,27 @@
+{
+    "restartable": "rs",
+    "ignore": [
+        ".git",
+        "public/apidoc/*",
+        "node_modules/**/node_modules"
+    ],
+    "verbose": true,
+    "execMap": {
+        "": "node",
+        "js": "node --harmony"
+    },
+    "events": {
+        "start": "apidoc -i routes/ -o public/apidoc/"
+    },
+    "watch": [
+        "routes",
+        "apidoc.json",
+        "nodemon.json"
+    ],
+    "env": {
+        "NODE_ENV": "development",
+        "PORT": "3000"
+    },
+    "ext": "js json",
+    "legacy-watch": false
+}
