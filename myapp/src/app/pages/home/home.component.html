@@ -1,1 +1,12 @@
 <p>home works!</p>
+<div
+    #myCharts
+    echarts
+    [options]="options"
+    [merge]="optionsNew"
+    class="demo-chart"
+></div>
+
+<div style="text-align: center"><button (click)="test()">测试</button></div>
+
+<div *ngFor="let item of adminList">{{ item.name }}</div>

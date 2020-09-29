@@ -16,21 +16,19 @@ router.get("/", async function (req, res, next) {
     //
     try {
         let asd = 0;
-        asd =await new Promise((resolve, rej) => {
-            setTimeout(() => {
-                console.log('getPowerIot');
-                resolve(123312);
-            }, 2000);
+        test(() => {
+            console.log(1);
         });
         res.send(db.r(asd, "获取成功"));
     } catch (error) {
         next(error);
     }
 });
-async function test() {
-    let data =  '';
+async function test(cb) {
+    typeof cb == "function" && cb();
+    console.log(2);
 
-    return data
+    return;
 }
 /**
  * @api {post} /login 登录
@@ -73,11 +71,17 @@ module.exports = {
         app.use(
             "/admin",
             (req, res, next) => {
-                // 权限检查
-                if (!req.session.admin) {
-                    next(createHttpError(401));
+                try {
+                    console.log(req.header);
+                    console.log(req.headers);
+                    // 权限检查
+                    if (!req.session.admin) {
+                        next(createHttpError(401));
+                    }
+                    next();
+                } catch (err) {
+                    next(err);
                 }
-                next();
             },
             adminRouter
         );

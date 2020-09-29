@@ -11,15 +11,17 @@ var app = express();
 //设置跨域访问
 app.all("*", function (req, res, next) {
     //设置允许跨域的域名，*代表允许任意域名跨域
+    // res.header("Access-Control-Allow-Origin", "http://localhost:4200");
     res.header("Access-Control-Allow-Origin", "*");
     //允许的header类型
     res.header(
         "Access-Control-Allow-Headers",
-        "Content-Type, Content-Length, Authorization, Accept, X-Requested-With"
+        "Content-Type, Content-Length, Authorization, Accept, X-Requested-With, Origin, Cookie"
     );
     // res.header("Access-Control-Allow-Headers", ["content-type", 'x-www-form-urlencoded']);
     //跨域允许的请求方式
     res.header("Access-Control-Allow-Methods", "DELETE,PUT,POST,GET,OPTIONS");
+    res.header("Access-Control-Allow-Credentials", true);
     if (req.method.toLowerCase() == "options") res.send(200);
     //让options尝试请求快速结束
     else next();

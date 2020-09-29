@@ -16,7 +16,8 @@
     "watch": [
         "routes",
         "apidoc.json",
-        "nodemon.json"
+        "nodemon.json",
+        "app.js"
     ],
     "env": {
         "NODE_ENV": "development",

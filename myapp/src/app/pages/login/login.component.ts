@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpService } from '../../services/http.service';
 import { Config } from '../../classes/config';
 import { from, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -19,52 +20,9 @@ export class LoginComponent implements OnInit {
         password: '',
     };
 
-    constructor(public http: HttpService) {}
+    constructor(public http: HttpService, public router: Router) {}
 
-    ngOnInit(): void {
-        this.test();
-    }
-
-    test() {
-        let ob = from([
-            new Observable((s) => {
-                setTimeout(() => {
-                    s.next(1);
-                    s.complete();
-                    console.log(1111);
-                }, 2000);
-            }),
-            new Observable((s) => {
-                setTimeout(() => {
-                    s.next(22);
-                    s.complete();
-                    console.log(222);
-                }, 2000);
-            }),
-            new Observable((s) => {
-                setTimeout(() => {
-                    s.next(33);
-                    s.complete();
-                    console.log(3333);
-                }, 2000);
-            }),
-        ]);
-
-        ob.subscribe(
-            (res) => {
-                console.log('res', res);
-                res.subscribe((ress) => {
-                    console.log('ress', ress);
-                });
-            },
-            (err) => {
-                console.log('err', err);
-            },
-            () => {
-                console.log('complete');
-            }
-        );
-    }
+    ngOnInit(): void {}
 
     onKeydown(e: KeyboardEvent): void {
         if (e.key == 'Enter') {
@@ -72,8 +30,11 @@ export class LoginComponent implements OnInit {
         }
     }
     submit(): void {
-        this.test();
-        return;
-        console.log(this.http.get('/login'));
+        this.http.post('/login', this.formData).subscribe((res) => {
+            console.log(res);
+            if (!res.code) {
+                this.router.navigateByUrl('');
+            }
+        });
     }
 }

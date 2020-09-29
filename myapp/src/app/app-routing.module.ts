@@ -5,8 +5,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
-    { path: '', component: LoginComponent },
-    // { path: '', component: HomeComponent },
+    { path: '', component: HomeComponent },
     { path: 'home', redirectTo: '' },
     { path: 'login', component: LoginComponent },
 

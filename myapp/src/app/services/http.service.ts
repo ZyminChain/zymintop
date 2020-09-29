@@ -1,32 +1,36 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpInterceptor } from '@angular/common/http';
+import { Observable, Subscription } from 'rxjs';
 import { Config } from '../classes/config';
+import { MyResponse } from '../classes/my-response';
 @Injectable({
     providedIn: 'root',
 })
 export class HttpService {
     httpOptions: Object = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+        // withCredentials: true,
     };
     constructor(public http: HttpClient) {}
 
-    get(url: string): Object {
-        return this.httpHandler(
-            this.http.get(Config.httpUrl + url, this.httpOptions)
+    get(url: string) {
+        return this.http.get<MyResponse>(
+            Config.httpUrl + url,
+            this.httpOptions
         );
     }
-    post(url: string, params: {}): Object {
-        return this.httpHandler(
-            this.http.post(Config.httpUrl + url, params, this.httpOptions)
+    post(url: string, params?: {}) {
+        return this.http.post<MyResponse>(
+            Config.httpUrl + url,
+            params,
+            this.httpOptions
         );
     }
 
-    httpHandler(observable: Observable<Object>) {
-        observable.subscribe(
+    httpHandler(observable: Observable<Object>): Subscription {
+        return observable.subscribe(
             (res) => {
                 console.log('res', res);
-                return res;
             },
             (err) => {
                 console.log('err', err);
@@ -35,6 +39,5 @@ export class HttpService {
                 console.log('complete');
             }
         );
-        return {};
     }
 }

@@ -3,7 +3,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+
+// http ******
+import {
+    HttpClientModule,
+    HttpClientXsrfModule,
+    HTTP_INTERCEPTORS,
+} from '@angular/common/http';
+import { MyInterceptor } from './interceptors/my-interceptor';
+// ********
+
+// echart ********
+import { NgxEchartsModule } from 'ngx-echarts';
+
+// **************
 
 // ng-zorro ***************
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
@@ -41,13 +54,23 @@ registerLocaleData(zh);
         AppRoutingModule,
         FormsModule,
         HttpClientModule,
+        HttpClientXsrfModule.withOptions({
+            cookieName: 'My-Xsrf-Cookie',
+            headerName: 'My-Xsrf-Header',
+        }),
         NzFormModule,
         NzCheckboxModule,
         NzButtonModule,
         NzInputModule,
         NzIconModule,
+        NgxEchartsModule.forRoot({
+            echarts: () => import('echarts'),
+        }),
     ],
-    providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+    providers: [
+        { provide: NZ_I18N, useValue: zh_CN },
+        { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true },
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
