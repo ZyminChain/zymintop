@@ -1,5 +1,13 @@
 const { Pool, Client } = require("pg");
 const crypto = require("crypto");
+var mysql = require("mysql");
+
+var mysqlConnection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "123456",
+    database: "test",
+});
 
 const pool = new Pool({
     user: "postgres",
@@ -62,7 +70,7 @@ module.exports = {
                 e = e.trim();
                 if (!data[e])
                     throw {
-                        message: "必要字段缺失,"+e,
+                        message: "必要字段缺失," + e,
                     };
             });
         }
